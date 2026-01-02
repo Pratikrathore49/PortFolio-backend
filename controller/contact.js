@@ -1,5 +1,7 @@
 import Contact from "../models/contact.js";
 import { transporter } from "../config/mail.js";
+import dotenv from 'dotenv'
+dotenv.config()
 
 const contactDetails = async (req, res) => {
   try {
@@ -9,7 +11,7 @@ const contactDetails = async (req, res) => {
         .status(400)
         .json({ success: false, message: "All Fields are Required" });
     }
-    await Contact.create({ name, email, message, subject });
+  const savedContact =   await Contact.create({ name, email, message, subject });
 
     await transporter.sendMail({
       from: `"Portfolio Contact",<${process.env.EMAIL_USER}>`,
@@ -39,7 +41,7 @@ const contactDetails = async (req, res) => {
     return res.status(201).json({
       success: true,
       message: "Message send successfully",
-      data: Contact._id,
+      data: savedContact._id,
     });
   } catch (error) {
     return res.status(500).json({
