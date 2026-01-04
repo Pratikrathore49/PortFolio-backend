@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const contactDetails = async (req, res) => {
+  console.log("running")
   try {
     const { name, email, message, subject } = req.body;
     if (!name || !email || !message || !subject) {
@@ -12,7 +13,7 @@ const contactDetails = async (req, res) => {
         .json({ success: false, message: "All Fields are Required" });
     }
   const savedContact =   await Contact.create({ name, email, message, subject });
-
+       console.log("mere process",process.env.EMAIL_USER,"dfdfd")
     await transporter.sendMail({
       from: `"Portfolio Contact",<${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
