@@ -26,18 +26,18 @@ const contactDetails = async (req, res) => {
         <p><strong>Message:</strong> ${message}</p>
       `,
     });
-    await transporter.sendMail({
-      from: `"Pratik Rathore" <${process.env.EMAIL_USER}>`,
-      to: email,
-      subject: "Thanks for connecting with me!",
-      html: `
-  <p>Hey, I'm <strong>Pratik</strong> 👋</p>
-  <p>Thanks for connecting with me through my portfolio.</p>
-  <p>I've received your message and will get back to you shortly.</p>
-  <br/>
-  <p>Best regards,<br/>Pratik Rathore</p>
-`,
-    });
+//     await transporter.sendMail({
+//       from: `"Pratik Rathore" <${process.env.EMAIL_USER}>`,
+//       to: email,
+//       subject: "Thanks for connecting with me!",
+//       html: `
+//   <p>Hey, I'm <strong>Pratik</strong> 👋</p>
+//   <p>Thanks for connecting with me through my portfolio.</p>
+//   <p>I've received your message and will get back to you shortly.</p>
+//   <br/>
+//   <p>Best regards,<br/>Pratik Rathore</p>
+// `,
+//     });
 
     return res.status(201).json({
       success: true,
