@@ -14,18 +14,19 @@ const contactDetails = async (req, res) => {
     }
   const savedContact =   await Contact.create({ name, email, message, subject });
        console.log("mere process",process.env.EMAIL_USER,"dfdfd")
-    await transporter.sendMail({
-      from: `"Portfolio Contact",<${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER,
-      replyTo: email,
-      subject: `New Portfolio Message: ,${subject}`,
-      html: `
-        <h3>New Contact Message</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong> ${message}</p>
-      `,
-    });
+       console.log("save",savedContact)
+    // await transporter.sendMail({
+    //   from: `"Portfolio Contact",<${process.env.EMAIL_USER}>`,
+    //   to: process.env.EMAIL_USER,
+    //   replyTo: email,
+    //   subject: `New Portfolio Message: ,${subject}`,
+    //   html: `
+    //     <h3>New Contact Message</h3>
+    //     <p><strong>Name:</strong> ${name}</p>
+    //     <p><strong>Email:</strong> ${email}</p>
+    //     <p><strong>Message:</strong> ${message}</p>
+    //   `,
+    // });
 //     await transporter.sendMail({
 //       from: `"Pratik Rathore" <${process.env.EMAIL_USER}>`,
 //       to: email,
