@@ -5,6 +5,9 @@ dotenv.config();
 
 const contactDetails = async (req, res) => {
   try {
+    console.log("Resend object:", resend);
+
+    console.log("📩 Contact API hit");
     const { name, email, message, subject } = req.body;
     if (!name || !email || !message || !subject) {
       return res
@@ -17,6 +20,8 @@ const contactDetails = async (req, res) => {
       message,
       subject,
     });
+    console.log("📨 Sending admin email...");
+
 
     await resend.emails.send({
       from: `Portfolio Contact <${process.env.EMAIL_FROM}>`,
@@ -29,8 +34,10 @@ const contactDetails = async (req, res) => {
         <p><b>Message:</b> ${message}</p>
       `,
     });
+    console.log("Admin email response:", adminEmail);
 
-  
+  console.log("📨 Sending user email...");
+
     await resend.emails.send({
       from: `Pratik Rathore <${process.env.EMAIL_FROM}>`,
       to: email,
@@ -43,6 +50,7 @@ const contactDetails = async (req, res) => {
         <p>Regards,<br/>Pratik Rathore</p>
       `,
     });
+    console.log("User email response:", userEmail);
 
     return res.status(201).json({
       success: true,
