@@ -38,19 +38,19 @@ const contactDetails = async (req, res) => {
 
   console.log("📨 Sending user email...");
 
-   const userEmail = await resend.emails.send({
-      from: `Pratik Rathore <${process.env.EMAIL_FROM}>`,
-      to: email,
-      subject: "Thanks for connecting with me!",
-      html: `
-        <p>Hi ${name},</p>
-        <p>Thanks for contacting me through my portfolio.</p>
-        <p>I’ve received your message and will reply soon.</p>
-        <br/>
-        <p>Regards,<br/>Pratik Rathore</p>
-      `,
-    });
-    console.log("User email response:", userEmail);
+  //  const userEmail = await resend.emails.send({
+  //     from: `Pratik Rathore <${process.env.EMAIL_FROM}>`,
+  //     to: email,
+  //     subject: "Thanks for connecting with me!",
+  //     html: `
+  //       <p>Hi ${name},</p>
+  //       <p>Thanks for contacting me through my portfolio.</p>
+  //       <p>I’ve received your message and will reply soon.</p>
+  //       <br/>
+  //       <p>Regards,<br/>Pratik Rathore</p>
+  //     `,
+  //   });
+  //   console.log("User email response:", userEmail);
 
     return res.status(201).json({
       success: true,
