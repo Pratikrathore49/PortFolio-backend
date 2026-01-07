@@ -23,7 +23,7 @@ const contactDetails = async (req, res) => {
     console.log("📨 Sending admin email...");
 
 
-    await resend.emails.send({
+   const adminEmail =  await resend.emails.send({
       from: `Portfolio Contact <${process.env.EMAIL_FROM}>`,
       to: process.env.EMAIL_FROM,
       subject: `New Portfolio Message: ${subject}`,
@@ -38,7 +38,7 @@ const contactDetails = async (req, res) => {
 
   console.log("📨 Sending user email...");
 
-    await resend.emails.send({
+   const userEmail = await resend.emails.send({
       from: `Pratik Rathore <${process.env.EMAIL_FROM}>`,
       to: email,
       subject: "Thanks for connecting with me!",
